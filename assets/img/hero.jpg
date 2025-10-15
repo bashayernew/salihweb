@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <pattern id="wood-grain-jpg" x="0" y="0" width="200" height="200" patternUnits="userSpaceOnUse">
+      <rect width="200" height="200" fill="#3a2617"/>
+      <path d="M0,50 Q50,45 100,50 T200,50" stroke="#2a1607" stroke-width="2" fill="none" opacity="0.3"/>
+      <path d="M0,100 Q50,95 100,100 T200,100" stroke="#2a1607" stroke-width="3" fill="none" opacity="0.4"/>
+      <path d="M0,150 Q50,145 100,150 T200,150" stroke="#2a1607" stroke-width="2" fill="none" opacity="0.3"/>
+    </pattern>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#wood-grain-jpg)"/>
+  <rect width="1920" height="1080" fill="rgba(0,0,0,0.4)"/>
+  <text x="960" y="540" font-family="sans-serif" font-size="48" fill="#C9C9C9" text-anchor="middle" opacity="0.5">HERO FALLBACK (JPG)</text>
+</svg>
+

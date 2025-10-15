@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <rect width="600" height="600" fill="#5a3627"/>
+  <rect x="100" y="80" width="150" height="440" rx="8" fill="#3a1607" opacity="0.5"/>
+  <rect x="270" y="80" width="150" height="440" rx="8" fill="#3a1607" opacity="0.5"/>
+  <rect x="440" y="80" width="60" height="440" rx="8" fill="#3a1607" opacity="0.5"/>
+  <text x="300" y="310" font-family="serif" font-size="48" font-weight="700" fill="#8B5E3C" text-anchor="middle">WORK 3</text>
+  <text x="300" y="360" font-family="sans-serif" font-size="22" fill="#C9C9C9" text-anchor="middle" opacity="0.7">Wardrobe</text>
+</svg>
+

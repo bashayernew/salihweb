@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us – Loud</title>
+  <meta name="description" content="Get in touch for a free consultation and quote. WhatsApp, phone, or send us a message." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <script src="language.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <img src="assets/img/logo.jpg" alt="Loud">
+      </a>
+      <nav>
+        <a href="index.html" data-translate="nav-home">Home</a>
+        <a href="gallery.html" data-translate="nav-gallery">Gallery</a>
+        <a href="services.html" data-translate="nav-services">Services</a>
+        <a href="workshops.html" data-translate="nav-workshops">Workshops</a>
+        <a href="process.html" data-translate="nav-process">Process</a>
+        <a href="about.html" data-translate="nav-about">About</a>
+        <a href="contact.html" class="active" data-translate="nav-contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero page-hero" id="hero" aria-label="Hero">
+      <picture>
+        <img src="assets/img/28753658_184984582226920_3992583366225428480_n.jpg" alt="Fine wood texture and tools in workshop" class="hero-bg" />
+      </picture>
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <h1 data-translate="contact-title">Get in <span class="accent">Touch</span></h1>
+        <p class="muted" data-translate="contact-subtitle">Let's discuss your project. Fast response guaranteed.</p>
+      </div>
+    </section>
+
+    <section class="contact" aria-label="Contact">
+      <div class="container" style="text-align:center; padding:40px 20px">
+        <div class="contact-showcase">
+          <img src="assets/img/Screenshot 2025-10-15 025916.png" alt="Beautiful wooden serving boards - let us create something for you" loading="lazy" style="width:100%; max-width:500px; border-radius:16px; margin-bottom:40px; box-shadow:0 8px 32px rgba(0,0,0,.12)">
+        </div>
+      </div>
+      <div class="container contact-grid">
+        <div>
+          <h2 data-translate="contact-quote-title">Request a <span class="accent">Quote</span></h2>
+          <p class="muted" data-translate="contact-quote-desc">Send us your measurements or inspiration and we'll respond quickly with options and pricing.</p>
+          
+          <div style="margin-top:30px">
+            <a class="btn btn-accent" id="whatsappBtn" href="#" style="display:inline-block; margin-bottom:15px" data-translate="contact-whatsapp-btn">WhatsApp Us</a>
+            <p style="font-size:.9rem; color:var(--muted)" data-translate="contact-quick-desc">Quickest way to reach us - we're usually online during business hours.</p>
+          </div>
+
+          <div style="margin-top:40px">
+            <h3 data-translate="contact-phone-title">Phone</h3>
+            <p class="muted"><a href="tel:+96599992588" style="color:var(--accent); text-decoration:none">+965 9999 2588</a></p>
+          </div>
+
+          <div style="margin-top:30px">
+            <h3 data-translate="contact-email-title">Email</h3>
+            <p class="muted"><a href="mailto:betok965@gmail.com" style="color:var(--accent); text-decoration:none">betok965@gmail.com</a></p>
+          </div>
+
+          <div style="margin-top:30px">
+            <h3 data-translate="contact-location-title">Location</h3>
+            <p class="muted" data-translate="contact-location-desc">Serving all areas across Kuwait</p>
+          </div>
+
+          <div style="margin-top:30px">
+            <h3 data-translate="contact-hours-title">Business Hours</h3>
+            <p class="muted" data-translate="contact-hours-desc">Saturday - Thursday: 8:00 AM - 6:00 PM<br>Friday: Closed</p>
+          </div>
+        </div>
+        
+        <div>
+          <h3 style="margin-bottom:20px" data-translate="contact-form-title">Send a Message</h3>
+          <form id="contactForm" action="https://formspree.io/f/xdkogpbz" method="POST" style="position:relative; z-index:100;">
+            <div style="margin-bottom:20px;">
+              <label for="formName" data-translate="contact-name" style="display:block; margin-bottom:8px;">Name</label>
+              <input id="formName" name="name" type="text" required autocomplete="name" style="display:block !important; width:100% !important;">
+            </div>
+            
+            <div style="margin-bottom:20px;">
+              <label for="formPhone" data-translate="contact-phone" style="display:block; margin-bottom:8px;">Phone</label>
+              <input id="formPhone" name="phone" type="tel" required autocomplete="tel" style="display:block !important; width:100% !important;">
+            </div>
+            
+            <div style="margin-bottom:20px;">
+              <label for="formEmail" data-translate="contact-email" style="display:block; margin-bottom:8px;">Email (optional)</label>
+              <input id="formEmail" name="email" type="email" autocomplete="email" style="display:block !important; width:100% !important;">
+            </div>
+            
+            <div style="margin-bottom:20px;">
+              <label for="formProjectType" data-translate="contact-project-type" style="display:block; margin-bottom:8px;">Project Type</label>
+              <select id="formProjectType" name="project_type" style="display:block !important; width:100% !important;">
+                <option value="" data-translate="contact-project-select">Select one</option>
+                <option value="Custom Doors" data-translate="contact-project-doors">Custom Doors</option>
+                <option value="Kitchen Cabinets" data-translate="contact-project-kitchen">Kitchen Cabinets</option>
+                <option value="Wardrobes" data-translate="contact-project-wardrobes">Wardrobes</option>
+                <option value="Wall Panels" data-translate="contact-project-panels">Wall Panels</option>
+                <option value="Majlis & Furniture" data-translate="contact-project-furniture">Majlis & Furniture</option>
+                <option value="Girls Workshop" data-translate="contact-project-workshop">Girls Workshop</option>
+                <option value="Other" data-translate="contact-project-other">Other</option>
+              </select>
+            </div>
+            
+            <div style="margin-bottom:20px;">
+              <label for="formMessage" data-translate="contact-message" style="display:block; margin-bottom:8px;">Message</label>
+              <textarea id="formMessage" name="message" rows="5" required data-translate-placeholder="contact-message-placeholder" placeholder="Tell us about your project..." style="display:block !important; width:100% !important;"></textarea>
+            </div>
+            
+            <input type="hidden" name="_subject" value="New Contact Form Submission from Loud Projects">
+            <button class="btn btn-accent" type="submit" data-translate="btn-submit" style="width:100%;">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a href="index.html" class="logo small">
+        <img src="assets/img/logo.jpg" alt="Loud">
+      </a>
+      <div class="socials">
+        <a href="https://instagram.com/loud_projects" aria-label="Instagram" class="social" target="_blank" rel="noopener">IG</a>
+        <a href="https://tiktok.com/@loud_projects" aria-label="TikTok" class="social" target="_blank" rel="noopener">TT</a>
+        <a href="https://wa.me/96599992588" aria-label="WhatsApp" class="social" target="_blank" rel="noopener">WA</a>
+      </div>
+      <div class="copy" data-translate="footer-copyright">© <span id="year"></span> Loud</div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
+
