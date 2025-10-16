@@ -24,7 +24,7 @@ p{margin:.5rem 0 1rem}
 
 /* Mobile Menu Toggle */
 .mobile-menu-toggle{
-  display: flex !important; /* Always show for testing */
+  display: none;
   flex-direction: column;
   justify-content: space-around;
   width: 32px;
@@ -229,10 +229,6 @@ form{position:relative; z-index:2; background:#fff; padding:20px; border-radius:
   .workshop-grid{grid-template-columns:1fr}
 }
 
-/* Mobile menu toggle always visible for testing */
-.mobile-menu-toggle{
-  display: flex !important;
-}
 
 @media (max-width: 768px){
   /* Show mobile menu toggle */
