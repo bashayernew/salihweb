@@ -1,5 +1,8 @@
 // Year
-document.getElementById('year').textContent = new Date().getFullYear();
+const yearElement = document.getElementById('year');
+if (yearElement) {
+  yearElement.textContent = new Date().getFullYear();
+}
 
 // Mobile Navigation - Simple and Robust
 function initMobileNavigation() {
@@ -77,10 +80,15 @@ function initMobileNavigation() {
 }
 
 // Initialize when DOM is ready
+function initializeApp() {
+  // Small delay to ensure DOM is fully ready
+  setTimeout(initMobileNavigation, 100);
+}
+
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initMobileNavigation);
+  document.addEventListener('DOMContentLoaded', initializeApp);
 } else {
-  initMobileNavigation();
+  initializeApp();
 }
 
 // WhatsApp CTA
