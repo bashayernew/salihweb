@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mobile Navigation Test - Loud</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body { margin: 0; padding: 20px; font-family: Arial, sans-serif; }
+    .test-info { background: #f0f0f0; padding: 20px; margin: 20px 0; border-radius: 8px; }
+    .test-info h2 { color: #333; margin-top: 0; }
+    .test-info p { color: #666; line-height: 1.6; }
+    .console-output { background: #000; color: #0f0; padding: 15px; border-radius: 5px; font-family: monospace; font-size: 14px; margin: 20px 0; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <img src="assets/img/logo.jpg" alt="Loud" style="height: 40px;">
+      </a>
+      <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="main-nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="services.html">Services</a>
+        <a href="workshops.html">Workshops</a>
+        <a href="process.html">Process</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main style="padding: 40px 20px;">
+    <div class="test-info">
+      <h2>🧪 Mobile Navigation Test Page</h2>
+      <p><strong>Instructions:</strong></p>
+      <ul>
+        <li>You should see a hamburger menu (☰) in the top-right corner</li>
+        <li>Click the hamburger menu to open the mobile navigation</li>
+        <li>The menu should slide down from the top</li>
+        <li>Click outside the menu or on any nav link to close it</li>
+        <li>Open browser console (F12) to see debug messages</li>
+      </ul>
+    </div>
+
+    <div class="console-output" id="console-output">
+      <div>Console output will appear here...</div>
+    </div>
+
+    <div class="test-info">
+      <h2>📱 Mobile Navigation Features</h2>
+      <ul>
+        <li>✅ Hamburger menu toggle</li>
+        <li>✅ Smooth slide-down animation</li>
+        <li>✅ Click outside to close</li>
+        <li>✅ Nav link auto-close</li>
+        <li>✅ Hamburger-to-X animation</li>
+        <li>✅ Body scroll prevention when open</li>
+        <li>✅ Escape key to close</li>
+      </ul>
+    </div>
+
+    <div class="test-info">
+      <h2>🔧 Debug Information</h2>
+      <p>Check the browser console (F12 → Console tab) for debug messages:</p>
+      <ul>
+        <li>"Mobile nav elements found" - Elements detected</li>
+        <li>"Mobile navigation initialized successfully" - Setup complete</li>
+        <li>"Toggle menu clicked" - Button interaction</li>
+        <li>"Menu opened/closed" - State changes</li>
+      </ul>
+    </div>
+  </main>
+
+  <script src="script.js" defer></script>
+  <script>
+    // Capture console output for display
+    const originalLog = console.log;
+    const originalError = console.error;
+    const consoleOutput = document.getElementById('console-output');
+    
+    function addToConsole(message, type = 'log') {
+      const div = document.createElement('div');
+      div.style.color = type === 'error' ? '#f44' : '#0f0';
+      div.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+      consoleOutput.appendChild(div);
+      consoleOutput.scrollTop = consoleOutput.scrollHeight;
+    }
+    
+    console.log = function(...args) {
+      originalLog.apply(console, args);
+      addToConsole(args.join(' '), 'log');
+    };
+    
+    console.error = function(...args) {
+      originalError.apply(console, args);
+      addToConsole(args.join(' '), 'error');
+    };
+  </script>
+</body>
+</html>
