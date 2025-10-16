@@ -15,7 +15,7 @@ p{margin:.5rem 0 1rem}
 .container{max-width:var(--max); margin:0 auto; padding:0 20px}
 
 /* Header */
-.site-header{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.95); backdrop-filter:saturate(120%) blur(12px); border-bottom:1px solid var(--border); box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.site-header{position:sticky; top:0; z-index:102; background:rgba(255,255,255,.95); backdrop-filter:saturate(120%) blur(12px); border-bottom:1px solid var(--border); box-shadow:0 2px 8px rgba(0,0,0,.04)}
 .header-inner{display:flex; align-items:center; justify-content:space-between; height:64px; position:relative}
 .logo{text-decoration:none; color:var(--fg); display:flex; align-items:center}
 .logo img{transition:transform .2s ease; height:60px; width:auto}
@@ -33,7 +33,7 @@ p{margin:.5rem 0 1rem}
   border: none;
   cursor: pointer;
   padding: 6px;
-  z-index: 100;
+  z-index: 101;
   position: relative;
   border-radius: 8px;
   transition: all 0.3s ease;
@@ -245,14 +245,16 @@ form{position:relative; z-index:2; background:#fff; padding:20px; border-radius:
     display: flex;
   }
   
-  /* Mobile navigation styles - More elegant design */
+  /* Mobile navigation styles - Full screen coverage */
   .main-nav{
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(249, 249, 249, 0.95) 100%);
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(249, 249, 249, 0.98) 100%);
     backdrop-filter: saturate(120%) blur(25px);
     flex-direction: column;
     justify-content: center;
@@ -262,8 +264,10 @@ form{position:relative; z-index:2; background:#fff; padding:20px; border-radius:
     visibility: hidden;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 99;
-    padding: 100px 20px 40px;
+    padding: 0;
+    margin: 0;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
   
   /* Mobile nav open state */
@@ -273,29 +277,31 @@ form{position:relative; z-index:2; background:#fff; padding:20px; border-radius:
     visibility: visible;
   }
   
-  /* Mobile nav links - Enhanced elegance */
+  /* Mobile nav links - Full screen spread */
   .main-nav a{
-    margin: 8px 0;
-    font-size: 1.4rem;
+    margin: 12px 0;
+    font-size: 1.6rem;
     font-weight: 500;
     color: var(--fg);
     text-decoration: none;
     text-align: center;
-    padding: 18px 40px;
-    border-radius: 20px;
+    padding: 24px 50px;
+    border-radius: 24px;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    max-width: 320px;
-    min-height: 56px;
+    width: 90%;
+    max-width: 400px;
+    min-height: 64px;
     transform: translateY(30px);
     opacity: 0;
     animation: slideInUp 0.5s ease forwards;
     border: 2px solid transparent;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    font-weight: 600;
   }
   
   /* Staggered animation for nav links - All 7 items */
