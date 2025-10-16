@@ -1,6 +1,56 @@
 // Year
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// Mobile Navigation
+const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+const mainNav = document.querySelector('.main-nav');
+
+if (mobileMenuToggle && mainNav) {
+  mobileMenuToggle.addEventListener('click', () => {
+    const isActive = mainNav.classList.contains('active');
+    
+    // Toggle menu state
+    mainNav.classList.toggle('active');
+    mobileMenuToggle.classList.toggle('active');
+    
+    // Prevent body scroll when menu is open
+    if (!isActive) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  });
+  
+  // Close menu when clicking on nav links
+  mainNav.addEventListener('click', (e) => {
+    if (e.target.tagName === 'A') {
+      mainNav.classList.remove('active');
+      mobileMenuToggle.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+  
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (mainNav.classList.contains('active') && 
+        !mainNav.contains(e.target) && 
+        !mobileMenuToggle.contains(e.target)) {
+      mainNav.classList.remove('active');
+      mobileMenuToggle.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+  
+  // Close menu on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mainNav.classList.contains('active')) {
+      mainNav.classList.remove('active');
+      mobileMenuToggle.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+}
+
 // WhatsApp CTA
 const phone = '96599992588'; // Kuwait: +965 99992588
 const msg = encodeURIComponent("Hi, I'd like a quote for a custom wood project.");
