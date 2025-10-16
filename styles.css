@@ -24,7 +24,7 @@ p{margin:.5rem 0 1rem}
 
 /* Mobile Menu Toggle */
 .mobile-menu-toggle{
-  display: none;
+  display: flex !important; /* Always show for testing */
   flex-direction: column;
   justify-content: space-around;
   width: 32px;
@@ -227,6 +227,11 @@ form{position:relative; z-index:2; background:#fff; padding:20px; border-radius:
   .about-grid, .contact-grid, .benefits-grid{grid-template-columns:1fr}
   .steps{grid-template-columns:1fr 1fr}
   .workshop-grid{grid-template-columns:1fr}
+}
+
+/* Mobile menu toggle always visible for testing */
+.mobile-menu-toggle{
+  display: flex !important;
 }
 
 @media (max-width: 768px){

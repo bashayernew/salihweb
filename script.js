@@ -1,80 +1,87 @@
 // Year
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Mobile Navigation
-document.addEventListener('DOMContentLoaded', function() {
+// Mobile Navigation - Simple and Robust
+function initMobileNavigation() {
   const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
   const mainNav = document.querySelector('.main-nav');
   
+  console.log('Mobile nav elements found:', { mobileMenuToggle, mainNav });
+  
   if (!mobileMenuToggle || !mainNav) {
-    console.warn('Mobile navigation elements not found');
+    console.error('Mobile navigation elements not found!');
     return;
   }
 
-  // Toggle mobile menu
-  function toggleMobileMenu() {
-    const isOpen = mainNav.classList.contains('mobile-nav-open');
+  let isMenuOpen = false;
+
+  function toggleMenu() {
+    console.log('Toggle menu clicked, current state:', isMenuOpen);
     
-    if (isOpen) {
-      closeMobileMenu();
+    isMenuOpen = !isMenuOpen;
+    
+    if (isMenuOpen) {
+      mainNav.classList.add('mobile-nav-open');
+      mobileMenuToggle.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      console.log('Menu opened');
     } else {
-      openMobileMenu();
+      mainNav.classList.remove('mobile-nav-open');
+      mobileMenuToggle.classList.remove('active');
+      document.body.style.overflow = '';
+      console.log('Menu closed');
     }
   }
 
-  // Open mobile menu
-  function openMobileMenu() {
-    mainNav.classList.add('mobile-nav-open');
-    mobileMenuToggle.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    document.body.classList.add('mobile-menu-open');
+  function closeMenu() {
+    if (isMenuOpen) {
+      isMenuOpen = false;
+      mainNav.classList.remove('mobile-nav-open');
+      mobileMenuToggle.classList.remove('active');
+      document.body.style.overflow = '';
+      console.log('Menu closed');
+    }
   }
 
-  // Close mobile menu
-  function closeMobileMenu() {
-    mainNav.classList.remove('mobile-nav-open');
-    mobileMenuToggle.classList.remove('active');
-    document.body.style.overflow = '';
-    document.body.classList.remove('mobile-menu-open');
-  }
-
-  // Event listeners
+  // Hamburger button click
   mobileMenuToggle.addEventListener('click', function(e) {
     e.preventDefault();
     e.stopPropagation();
-    toggleMobileMenu();
+    toggleMenu();
   });
 
-  // Close menu when clicking on nav links
+  // Close when clicking nav links
   mainNav.addEventListener('click', function(e) {
     if (e.target.tagName === 'A') {
-      closeMobileMenu();
+      closeMenu();
     }
   });
 
-  // Close menu when clicking outside
+  // Close when clicking outside
   document.addEventListener('click', function(e) {
-    if (mainNav.classList.contains('mobile-nav-open') && 
+    if (isMenuOpen && 
         !mainNav.contains(e.target) && 
         !mobileMenuToggle.contains(e.target)) {
-      closeMobileMenu();
+      closeMenu();
     }
   });
 
-  // Close menu on escape key
+  // Close on escape key
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && mainNav.classList.contains('mobile-nav-open')) {
-      closeMobileMenu();
+    if (e.key === 'Escape' && isMenuOpen) {
+      closeMenu();
     }
   });
 
-  // Close menu on window resize (if resizing to desktop)
-  window.addEventListener('resize', function() {
-    if (window.innerWidth > 768 && mainNav.classList.contains('mobile-nav-open')) {
-      closeMobileMenu();
-    }
-  });
-});
+  console.log('Mobile navigation initialized successfully');
+}
+
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initMobileNavigation);
+} else {
+  initMobileNavigation();
+}
 
 // WhatsApp CTA
 const phone = '96599992588'; // Kuwait: +965 99992588
