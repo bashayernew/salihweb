@@ -23,21 +23,48 @@ p{margin:.5rem 0 1rem}
 .logo.small img{height:60px; width:auto}
 
 /* Mobile Menu Toggle */
-.mobile-menu-toggle{display:none; flex-direction:column; justify-content:space-around; width:28px; height:28px; background:transparent; border:none; cursor:pointer; padding:0; z-index:100; position:relative}
+.mobile-menu-toggle{
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 100;
+  position: relative;
+}
 
-/* Temporary: Always show hamburger for testing */
-.mobile-menu-toggle{display:flex !important}
-.mobile-menu-toggle span{display:block; height:3px; width:100%; background:var(--fg); border-radius:2px; transition:all .3s ease; transform-origin:center}
-.mobile-menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(7px, 7px)}
-.mobile-menu-toggle.active span:nth-child(2){opacity:0}
-.mobile-menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(7px, -7px)}
+.mobile-menu-toggle span{
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: var(--fg);
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+
+/* Hamburger to X animation */
+.mobile-menu-toggle.active span:nth-child(1){
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2){
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.mobile-menu-toggle.active span:nth-child(3){
+  transform: rotate(-45deg) translate(8px, -8px);
+}
 
 /* Navigation */
-.main-nav{display:flex; align-items:center}
-
-/* Temporary: Show mobile nav for testing */
-@media (max-width: 768px){
-  .main-nav{position:fixed !important; top:0 !important; left:0 !important; right:0 !important; bottom:0 !important; background:rgba(255,255,255,.98) !important; backdrop-filter:saturate(120%) blur(20px) !important; flex-direction:column !important; justify-content:center !important; align-items:center !important; transform:translateY(-100%) !important; opacity:0 !important; visibility:hidden !important; transition:all .4s cubic-bezier(0.4, 0, 0.2, 1) !important; z-index:99 !important; padding:80px 20px 20px !important}
+.main-nav{
+  display: flex;
+  align-items: center;
 }
 .main-nav a{color:var(--fg); text-decoration:none; margin-left:20px; position:relative; font-weight:500; font-size:1rem; transition:color .3s ease}
 .main-nav a::after{content:""; position:absolute; left:0; bottom:-6px; width:0; height:2px; background:var(--accent); transition:width .2s}
@@ -204,63 +231,102 @@ form{position:relative; z-index:2; background:#fff; padding:20px; border-radius:
 
 @media (max-width: 768px){
   /* Show mobile menu toggle */
-  .mobile-menu-toggle{display:flex}
+  .mobile-menu-toggle{
+    display: flex;
+  }
   
-  /* Hide desktop navigation */
+  /* Mobile navigation styles */
   .main-nav{
-    position:fixed;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    background:rgba(255,255,255,.98);
-    backdrop-filter:saturate(120%) blur(20px);
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    transform:translateY(-100%);
-    opacity:0;
-    visibility:hidden;
-    transition:all .4s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index:99;
-    padding:80px 20px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: saturate(120%) blur(20px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 99;
+    padding: 80px 20px 20px;
   }
   
-  .main-nav.active{
-    transform:translateY(0);
-    opacity:1;
-    visibility:visible;
+  /* Mobile nav open state */
+  .main-nav.mobile-nav-open{
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
   }
   
+  /* Mobile nav links */
   .main-nav a{
-    margin:16px 0;
-    font-size:1.5rem;
-    font-weight:600;
-    color:var(--fg);
-    text-align:center;
-    padding:12px 24px;
-    border-radius:12px;
-    transition:all .3s ease;
-    position:relative;
-    display:block;
-    width:100%;
-    max-width:280px;
+    margin: 12px 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--fg);
+    text-decoration: none;
+    text-align: center;
+    padding: 16px 32px;
+    border-radius: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    transform: translateY(20px);
+    opacity: 0;
+    animation: slideInUp 0.3s ease forwards;
   }
   
+  /* Staggered animation for nav links */
+  .main-nav.mobile-nav-open a:nth-child(1) { animation-delay: 0.1s; }
+  .main-nav.mobile-nav-open a:nth-child(2) { animation-delay: 0.15s; }
+  .main-nav.mobile-nav-open a:nth-child(3) { animation-delay: 0.2s; }
+  .main-nav.mobile-nav-open a:nth-child(4) { animation-delay: 0.25s; }
+  .main-nav.mobile-nav-open a:nth-child(5) { animation-delay: 0.3s; }
+  .main-nav.mobile-nav-open a:nth-child(6) { animation-delay: 0.35s; }
+  .main-nav.mobile-nav-open a:nth-child(7) { animation-delay: 0.4s; }
+  
+  /* Remove desktop hover effects */
   .main-nav a::after{
-    display:none;
+    display: none;
   }
   
+  /* Mobile link hover and active states */
   .main-nav a:hover,
   .main-nav a.active{
-    background:rgba(139,94,60,.1);
-    color:var(--accent);
-    transform:translateY(-2px);
+    background: rgba(139, 94, 60, 0.1);
+    color: var(--accent);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 8px 24px rgba(139, 94, 60, 0.15);
   }
   
   .main-nav a.active{
-    background:rgba(139,94,60,.15);
-    box-shadow:0 4px 16px rgba(139,94,60,.2);
+    background: rgba(139, 94, 60, 0.15);
+    box-shadow: 0 8px 24px rgba(139, 94, 60, 0.2);
+  }
+  
+  /* Prevent body scroll when mobile menu is open */
+  body.mobile-menu-open{
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+}
+
+/* Animation keyframes */
+@keyframes slideInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 

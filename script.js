@@ -2,72 +2,79 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
 // Mobile Navigation
-const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-const mainNav = document.querySelector('.main-nav');
-
-console.log('Mobile menu elements:', { mobileMenuToggle, mainNav });
-
-if (mobileMenuToggle && mainNav) {
-  console.log('Mobile navigation initialized successfully');
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+  const mainNav = document.querySelector('.main-nav');
   
-  mobileMenuToggle.addEventListener('click', (e) => {
+  if (!mobileMenuToggle || !mainNav) {
+    console.warn('Mobile navigation elements not found');
+    return;
+  }
+
+  // Toggle mobile menu
+  function toggleMobileMenu() {
+    const isOpen = mainNav.classList.contains('mobile-nav-open');
+    
+    if (isOpen) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
+  }
+
+  // Open mobile menu
+  function openMobileMenu() {
+    mainNav.classList.add('mobile-nav-open');
+    mobileMenuToggle.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    document.body.classList.add('mobile-menu-open');
+  }
+
+  // Close mobile menu
+  function closeMobileMenu() {
+    mainNav.classList.remove('mobile-nav-open');
+    mobileMenuToggle.classList.remove('active');
+    document.body.style.overflow = '';
+    document.body.classList.remove('mobile-menu-open');
+  }
+
+  // Event listeners
+  mobileMenuToggle.addEventListener('click', function(e) {
     e.preventDefault();
     e.stopPropagation();
-    console.log('Mobile menu toggle clicked');
-    
-    const isActive = mainNav.classList.contains('active');
-    console.log('Menu is currently active:', isActive);
-    
-    // Toggle menu state
-    mainNav.classList.toggle('active');
-    mobileMenuToggle.classList.toggle('active');
-    
-    console.log('Menu classes after toggle:', {
-      mainNav: mainNav.classList.toString(),
-      toggle: mobileMenuToggle.classList.toString()
-    });
-    
-    // Prevent body scroll when menu is open
-    if (!isActive) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    toggleMobileMenu();
   });
-} else {
-  console.error('Mobile navigation elements not found:', { mobileMenuToggle, mainNav });
-}
 
-if (mobileMenuToggle && mainNav) {
   // Close menu when clicking on nav links
-  mainNav.addEventListener('click', (e) => {
+  mainNav.addEventListener('click', function(e) {
     if (e.target.tagName === 'A') {
-      mainNav.classList.remove('active');
-      mobileMenuToggle.classList.remove('active');
-      document.body.style.overflow = '';
+      closeMobileMenu();
     }
   });
-  
+
   // Close menu when clicking outside
-  document.addEventListener('click', (e) => {
-    if (mainNav.classList.contains('active') && 
+  document.addEventListener('click', function(e) {
+    if (mainNav.classList.contains('mobile-nav-open') && 
         !mainNav.contains(e.target) && 
         !mobileMenuToggle.contains(e.target)) {
-      mainNav.classList.remove('active');
-      mobileMenuToggle.classList.remove('active');
-      document.body.style.overflow = '';
+      closeMobileMenu();
     }
   });
-  
+
   // Close menu on escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && mainNav.classList.contains('active')) {
-      mainNav.classList.remove('active');
-      mobileMenuToggle.classList.remove('active');
-      document.body.style.overflow = '';
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && mainNav.classList.contains('mobile-nav-open')) {
+      closeMobileMenu();
     }
   });
-}
+
+  // Close menu on window resize (if resizing to desktop)
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 768 && mainNav.classList.contains('mobile-nav-open')) {
+      closeMobileMenu();
+    }
+  });
+});
 
 // WhatsApp CTA
 const phone = '96599992588'; // Kuwait: +965 99992588
