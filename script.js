@@ -5,13 +5,27 @@ document.getElementById('year').textContent = new Date().getFullYear();
 const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
 const mainNav = document.querySelector('.main-nav');
 
+console.log('Mobile menu elements:', { mobileMenuToggle, mainNav });
+
 if (mobileMenuToggle && mainNav) {
-  mobileMenuToggle.addEventListener('click', () => {
+  console.log('Mobile navigation initialized successfully');
+  
+  mobileMenuToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log('Mobile menu toggle clicked');
+    
     const isActive = mainNav.classList.contains('active');
+    console.log('Menu is currently active:', isActive);
     
     // Toggle menu state
     mainNav.classList.toggle('active');
     mobileMenuToggle.classList.toggle('active');
+    
+    console.log('Menu classes after toggle:', {
+      mainNav: mainNav.classList.toString(),
+      toggle: mobileMenuToggle.classList.toString()
+    });
     
     // Prevent body scroll when menu is open
     if (!isActive) {
@@ -20,7 +34,11 @@ if (mobileMenuToggle && mainNav) {
       document.body.style.overflow = '';
     }
   });
-  
+} else {
+  console.error('Mobile navigation elements not found:', { mobileMenuToggle, mainNav });
+}
+
+if (mobileMenuToggle && mainNav) {
   // Close menu when clicking on nav links
   mainNav.addEventListener('click', (e) => {
     if (e.target.tagName === 'A') {
